@@ -42,6 +42,12 @@ ul.menu li a {
   line-height: 40px;
   text-align: center;
   height: 40px;
+  /* novo teste */
+  text-decoration: none;
+}
+
+ul.menu li .icon {
+  display: none;
 }
 
 ul.menu li a:hover {
@@ -66,7 +72,21 @@ div.list-section div.header h2 {
   border-bottom: 2px solid;
 }
 
-main {
+/* main {
+  height: calc(100vh - 120px);
+} */
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input {
+  font-size: 15px;
+  margin: 20px;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 footer {
@@ -78,4 +98,35 @@ footer {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+footer a:hover {
+  opacity: 0.6;
+}
+
+/* Medias mobile */
+
+@media (max-width: 700px) {
+  ul.menu li a.icon {
+    display: block;
+  }
+
+  ul.menu li a {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .menuresponsive li a {
+    position: relative;
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .menuresponsive li {
+    list-style-type: none;
+    position: relative;
+    right: 0;
+    top: 0;
+  }
 }
