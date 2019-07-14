@@ -8,20 +8,18 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.1/jquery.js"></script>
   </head>
   <body>
-    <nav>
-      <a href="#" class="brand">List App</a>
-      <ul class="menu" id="menuTop">
-        <li><a id="menu-users" href="#">Users</a></li>
-        <li><a id="menu-posts" href="#">Posts</a></li>
-        <li>
-          <a href="javascript:void(0);" class="icon" onclick="myMenu()">
-            <i class="fa fa-bars"></i>
-          </a>
-        </li>
-      </ul>
-    </nav>
+    <div class="topnav" id="myTopnav">
+      <a class="brand" class="active">List App</a>
+
+      <a id="menu-users">Users</a>
+      <a id="menu-posts">Posts</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
 
     <main>
       <div id="div-users" style="display:none" class="list-section">
@@ -75,5 +73,62 @@
     </footer>
 
     <script type="text/javascript" src="javascript.js"></script>
+    <script>
+      var tamanhoPagina = 8;
+      var pagina = 0;
+
+      function paginar() {
+        $("table > tbody > tr").remove();
+        var tbody = $("table > tbody");
+        for (
+          var i = pagina * tamanhoPagina;
+          i < dados.length && i < (pagina + 1) * tamanhoPagina;
+          i++
+        ) {
+          tbody.append(
+            $("<tr>")
+              .append($("<td>").append(dados[i][0]))
+              .append($("<td>").append(dados[i][1]))
+          );
+        }
+        $("#numeracao").text(
+          "Página " +
+            (pagina + 1) +
+            " de " +
+            Math.ceil(dados.length / tamanhoPagina)
+        );
+      }
+
+      function ajustarBotoes() {
+        $("#proximo").prop(
+          "disabled",
+          dados.length <= tamanhoPagina ||
+            pagina > dados.length / tamanhoPagina - 1
+        );
+        $("#anterior").prop(
+          "disabled",
+          dados.length <= tamanhoPagina || pagina == 0
+        );
+      }
+
+      $(function() {
+        $("#proximo").click(function() {
+          if (pagina < dados.length / tamanhoPagina - 1) {
+            pagina++;
+            paginar();
+            ajustarBotoes();
+          }
+        });
+        $("#anterior").click(function() {
+          if (pagina > 0) {
+            pagina--;
+            paginar();
+            ajustarBotoes();
+          }
+        });
+        paginar();
+        ajustarBotoes();
+      });
+    </script>
   </body>
 </html>

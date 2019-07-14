@@ -26,12 +26,14 @@ fetch("https://jsonplaceholder.typicode.com/users/")
     for (i = 0; i < myJson.length; i++) {
       let node = document.createElement("LI");
       let a = document.createElement("A");
+      let user = document.createElement("P");
 
       let textNode = document.createTextNode(myJson[i].name);
       node.appendChild(a);
       a.appendChild(textNode);
 
       document.getElementById("list-users").appendChild(node);
+      document.getElementById("list-users").appendChild(user);
     }
   });
 
@@ -43,12 +45,14 @@ fetch("https://jsonplaceholder.typicode.com/posts/")
     for (i = 0; i < myJson.length; i++) {
       let node = document.createElement("LI");
       let a = document.createElement("A");
+      let user = document.createElement("P");
 
       let textNode = document.createTextNode(myJson[i].title);
       node.appendChild(a);
       a.appendChild(textNode);
 
       document.getElementById("list-posts").appendChild(node);
+      document.getElementById("list-posts").appendChild(user);
     }
   });
 
@@ -98,11 +102,20 @@ function myFunctionPosts() {
 
 // menu;
 
-function myMenu() {
-  var x = document.getElementById("menuTop");
-  if (x.className === "menu") {
-    x.className += "responsive";
+// function myMenu() {
+//   var x = document.getElementById("menuTop");
+//   if (x.className === "menu") {
+//     x.className += "responsive";
+//   } else {
+//     x.className = "menu";
+//   }
+// }
+
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
   } else {
-    x.className = "menu";
+    x.className = "topnav";
   }
 }
