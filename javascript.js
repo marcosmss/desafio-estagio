@@ -24,18 +24,14 @@ fetch("https://jsonplaceholder.typicode.com/users/")
   })
   .then(function(myJson) {
     for (i = 0; i < myJson.length; i++) {
-      let node = document.createElement("H3");
-      let p = document.createElement("P");
-      let pp = document.createElement("P");
-      let textNode = document.createTextNode(`Name: ${myJson[i].name}`);
-      let pNode = document.createTextNode(`Username: ${myJson[i].username}`);
-      let pEmail = document.createTextNode(`Email: ${myJson[i].email}`);
-      node.appendChild(textNode);
-      p.appendChild(pNode);
-      pp.appendChild(pEmail);
+      let node = document.createElement("LI");
+      let a = document.createElement("A");
+
+      let textNode = document.createTextNode(myJson[i].name);
+      node.appendChild(a);
+      a.appendChild(textNode);
+
       document.getElementById("list-users").appendChild(node);
-      document.getElementById("list-users").appendChild(p);
-      document.getElementById("list-users").appendChild(pp);
     }
   });
 
@@ -60,25 +56,25 @@ fetch("https://jsonplaceholder.typicode.com/posts/")
 
 //searchbox
 
-// function myFunction() {
-//   // Declare variables
-//   var input, filter, ul, li, a, i, txtValue;
-//   input = document.getElementById("myInput");
-//   filter = input.value.toUpperCase();
-//   ul = document.getElementById("list-users");
-//   li = ul.getElementsByTagName("li");
+function myFunction() {
+  // Declare variables
+  var input, filter, ul, li, a, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("list-users");
+  li = ul.getElementsByTagName("li");
 
-//   // Loop through all list items, and hide those who don't match the search query
-//   for (i = 0; i < li.length; i++) {
-//     a = li[i].getElementsByTagName("a")[0];
-//     txtValue = a.textContent || a.innerText;
-//     if (txtValue.toUpperCase().indexOf(filter) > -1) {
-//       li[i].style.display = "";
-//     } else {
-//       li[i].style.display = "none";
-//     }
-//   }
-// }
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("a")[0];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
 
 // menu;
 

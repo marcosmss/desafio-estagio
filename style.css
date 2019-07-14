@@ -72,9 +72,9 @@ div.list-section div.header h2 {
   border-bottom: 2px solid;
 }
 
-/* main {
+main {
   height: calc(100vh - 120px);
-} */
+}
 
 form {
   display: flex;
